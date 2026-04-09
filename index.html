@@ -129,8 +129,7 @@ body::after {
   padding: 10px 0 6px;
 }
 
-.micro-btn,
-.longmode-btn {
+.micro-btn {
   height: 36px;
   padding: 0 14px;
   border-radius: 14px;
@@ -147,8 +146,7 @@ body::after {
   transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
 }
 
-.micro-btn:hover:not(:disabled),
-.longmode-btn:hover {
+.micro-btn:hover:not(:disabled) {
   background: rgba(255, 255, 255, 0.06);
 }
 
@@ -157,8 +155,7 @@ body::after {
   cursor: not-allowed;
 }
 
-.micro-btn.active,
-.longmode-btn.active {
+.micro-btn.active {
   border-color: rgba(143, 121, 255, 0.3);
   background: rgba(143, 121, 255, 0.14);
   color: #d7caff;
@@ -168,12 +165,6 @@ body::after {
   width: 1px;
   height: 18px;
   background: rgba(255, 255, 255, 0.1);
-}
-
-.longmode-stream {
-  color: rgba(143, 121, 255, 0.8);
-  font-size: 11px;
-  font-weight: 700;
 }
 
 .micro-popover {
@@ -292,6 +283,12 @@ body::after {
 
 .toolbar-right {
   gap: 12px;
+}
+
+.toolbar-divider {
+  width: 1px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .dropdown {
@@ -480,6 +477,34 @@ body::after {
   height: 18px;
 }
 
+.translate-glyph {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  color: currentColor;
+}
+
+.translate-glyph-zh,
+.translate-glyph-en {
+  position: absolute;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.translate-glyph-zh {
+  left: 1px;
+  top: 0;
+  font-size: 15px;
+}
+
+.translate-glyph-en {
+  right: 0;
+  bottom: 0;
+  font-size: 13px;
+}
+
 .counter,
 .credit {
   font-size: 15px;
@@ -490,6 +515,62 @@ body::after {
   min-width: 92px;
   text-align: right;
   font-variant-numeric: tabular-nums;
+}
+
+.longmode-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(226, 231, 240, 0.92);
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.longmode-inline-label {
+  letter-spacing: 0.01em;
+}
+
+.longmode-toggle {
+  position: relative;
+  width: 48px;
+  height: 28px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: background 0.18s ease, box-shadow 0.18s ease;
+}
+
+.longmode-toggle::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.32);
+  transition: transform 0.18s ease;
+}
+
+.longmode-toggle.on {
+  background: rgba(115, 184, 255, 0.4);
+  box-shadow: inset 0 0 0 1px rgba(115, 184, 255, 0.22);
+}
+
+.longmode-toggle.on::after {
+  transform: translateX(20px);
+}
+
+.longmode-toggle:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.longmode-toggle.on:hover {
+  background: rgba(115, 184, 255, 0.5);
 }
 
 .credit {
@@ -707,6 +788,30 @@ body::after {
   line-height: 1.1;
 }
 
+.voice-name-copy {
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-faint);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.voice-name-copy:hover {
+  background: rgba(115, 184, 255, 0.14);
+  color: var(--blue);
+}
+
+.voice-name-copy svg {
+  width: 14px;
+  height: 14px;
+}
+
 .voice-desc {
   color: var(--text-faint);
   font-size: 11px;
@@ -920,6 +1025,78 @@ body::after {
   align-items: center;
 }
 
+.voice-filter-summary {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.voice-filter-summary.open {
+  display: flex;
+}
+
+.voice-filter-chip {
+  min-height: 38px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(237, 242, 251, 0.92);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.voice-filter-chip:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.voice-filter-chip-key {
+  color: rgba(160, 169, 185, 0.84);
+}
+
+.voice-filter-chip-divider {
+  width: 1px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.voice-filter-chip-close {
+  color: rgba(184, 192, 205, 0.74);
+  font-size: 18px;
+  line-height: 1;
+}
+
+.voice-filter-reset {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  color: rgba(219, 225, 236, 0.88);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+
+.voice-filter-reset:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.voice-filter-reset svg {
+  width: 20px;
+  height: 20px;
+}
+
 .voice-search {
   min-height: 46px;
   border-radius: 14px;
@@ -1013,37 +1190,26 @@ body::after {
   gap: 14px;
 }
 
-.voice-cover {
+.voice-preview-play {
   width: 60px;
   height: 60px;
+  border: none;
   border-radius: 16px;
   flex-shrink: 0;
-  background: linear-gradient(135deg, rgba(115, 184, 255, 0.22), rgba(143, 108, 255, 0.28));
+  background: rgba(255, 255, 255, 0.06);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  color: rgba(236, 242, 251, 0.9);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
 }
 
-.voice-cover[data-cover="coco-li"] {
-  background: linear-gradient(135deg, #ff7f9b, #ffb0cd 44%, #311b54 100%);
-}
-
-.voice-cover[data-cover="arden-xu"] {
-  background: linear-gradient(135deg, #3c2f81, #f29e38 50%, #ffd15e 100%);
-}
-
-.voice-cover[data-cover="mika-lin"] {
-  background: linear-gradient(135deg, #4e7ef5, #78d1ff 48%, #c3f0ff 100%);
-}
-
-.voice-cover[data-cover="ryan-chen"] {
-  background: linear-gradient(135deg, #423470, #cd8d4f 46%, #f3e2ac 100%);
-}
-
-.voice-cover[data-cover="hana"] {
-  background: linear-gradient(135deg, #ff8eb3, #ffd0de 46%, #a278f1 100%);
-}
-
-.voice-cover[data-cover="vera"] {
-  background: linear-gradient(135deg, #4e7bff, #5fd2c8 48%, #c8ffe6 100%);
+.voice-preview-play:hover {
+  background: rgba(143, 121, 255, 0.16);
+  color: #ffffff;
+  transform: translateY(-1px);
 }
 
 .voice-library-meta {
@@ -1350,6 +1516,17 @@ body::after {
   line-height: 1.8;
 }
 
+.my-voices-no-match {
+  min-height: 280px;
+  border-radius: 22px;
+  background: transparent;
+  color: rgba(121, 128, 142, 0.56);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-size: 14px;
+}
+
 .my-voices-big-cta {
   height: 44px;
   padding: 0 20px;
@@ -1438,6 +1615,7 @@ body::after {
 }
 
 .my-voice-actions {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -2312,8 +2490,13 @@ body::after {
   border: 1px solid rgba(143, 121, 255, 0.42);
   background: rgba(143, 121, 255, 0.08);
   color: #bba8ff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-size: 12px;
   font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .voice-select-btn {
@@ -2353,35 +2536,44 @@ body::after {
   position: absolute;
   top: calc(100% + 8px);
   right: 0;
-  min-width: 156px;
-  padding: 8px;
-  border-radius: 14px;
+  min-width: 188px;
+  padding: 10px;
+  border-radius: 18px;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(17, 19, 24, 0.98);
-  box-shadow: 0 16px 24px rgba(0, 0, 0, 0.26);
-  z-index: 8;
+  background: linear-gradient(180deg, rgba(34, 37, 44, 0.98), rgba(24, 27, 33, 0.98));
+  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.34);
+  z-index: 12;
 }
 
 .voice-copy-btn {
   width: 100%;
-  height: 38px;
-  padding: 0 10px;
+  min-height: 48px;
+  padding: 0 14px;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   background: transparent;
-  color: rgba(237, 242, 251, 0.92);
+  color: rgba(239, 243, 251, 0.94);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   font: inherit;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   text-align: left;
   cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.voice-copy-btn svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: rgba(233, 238, 247, 0.88);
 }
 
 .voice-copy-btn:hover {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(143, 121, 255, 0.12);
+  color: #ffffff;
 }
 
 .filter-modal {
@@ -2662,6 +2854,76 @@ body::after {
   gap: 10px;
 }
 
+.register-tag-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 12px;
+}
+
+.register-tag-pill,
+.register-tag-select-wrap {
+  min-height: 46px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  color: #edf2fb;
+  display: flex;
+  align-items: center;
+}
+
+.register-tag-pill {
+  padding: 0 14px;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.register-tag-value {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.register-tag-close {
+  color: rgba(188, 196, 209, 0.74);
+  font-size: 20px;
+  line-height: 1;
+}
+
+.register-tag-select-wrap {
+  position: relative;
+  padding-right: 36px;
+}
+
+.register-tag-select {
+  width: 100%;
+  height: 44px;
+  border: none;
+  background: transparent;
+  color: #edf2fb;
+  font: inherit;
+  font-size: 14px;
+  padding: 0 14px;
+  outline: none;
+  appearance: none;
+}
+
+.register-tag-select option {
+  color: #171a22;
+}
+
+.register-tag-select.is-placeholder {
+  color: rgba(188, 196, 209, 0.6);
+}
+
+.register-tag-arrow {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(188, 196, 209, 0.74);
+  font-size: 14px;
+  pointer-events: none;
+}
+
 .register-chip {
   height: 34px;
   padding: 0 14px;
@@ -2718,6 +2980,153 @@ body::after {
   background: rgba(255, 255, 255, 0.08);
   color: rgba(215, 223, 237, 0.5);
   cursor: not-allowed;
+}
+
+.edit-voice-modal,
+.delete-voice-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 9, 14, 0.62);
+  backdrop-filter: blur(10px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 82;
+}
+
+.edit-voice-modal.open,
+.delete-voice-modal.open {
+  display: flex;
+}
+
+.edit-voice-panel,
+.delete-voice-panel {
+  width: min(540px, 100%);
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(26, 29, 35, 0.98), rgba(18, 21, 26, 0.98));
+  color: #eef2fb;
+  box-shadow: 0 28px 76px rgba(0, 0, 0, 0.42);
+}
+
+.edit-voice-panel {
+  padding: 22px 22px 22px;
+}
+
+.delete-voice-panel {
+  padding: 22px 22px 22px;
+}
+
+.edit-voice-head,
+.delete-voice-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.edit-voice-title,
+.delete-voice-title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.edit-voice-close,
+.delete-voice-close {
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: rgba(188, 196, 209, 0.76);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.edit-voice-close:hover,
+.delete-voice-close:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #f4f7fd;
+}
+
+.edit-voice-body {
+  margin-top: 18px;
+  display: grid;
+  gap: 10px;
+}
+
+.edit-voice-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(192, 200, 214, 0.82);
+}
+
+.edit-voice-input {
+  width: 100%;
+  height: 56px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #eef2fb;
+  font: inherit;
+  font-size: 18px;
+  padding: 0 18px;
+  outline: none;
+}
+
+.edit-voice-input:focus {
+  border-color: rgba(126, 99, 255, 0.4);
+  box-shadow: 0 0 0 3px rgba(126, 99, 255, 0.14);
+}
+
+.edit-voice-actions,
+.delete-voice-actions {
+  margin-top: 18px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.edit-voice-save,
+.delete-voice-cancel,
+.delete-voice-confirm {
+  min-width: 112px;
+  height: 46px;
+  border: none;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.edit-voice-save,
+.delete-voice-confirm {
+  background: linear-gradient(135deg, #7e63ff, #5c7cff);
+  color: #ffffff;
+}
+
+.edit-voice-save:disabled {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(215, 223, 237, 0.5);
+  cursor: not-allowed;
+}
+
+.delete-voice-cancel {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(237, 242, 251, 0.9);
+}
+
+.delete-voice-copy {
+  margin-top: 18px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.7;
+  color: rgba(238, 242, 251, 0.92);
 }
 
 .toast {
@@ -2968,6 +3377,24 @@ input[type="range"]::-moz-range-thumb {
     font-size: 15px;
   }
 
+  .toolbar-right {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .toolbar-divider {
+    display: none;
+  }
+
+  .longmode-inline {
+    order: 2;
+  }
+
+  .counter {
+    order: 3;
+  }
+
   .settings-panel {
     padding: 18px 18px 20px;
   }
@@ -3034,10 +3461,6 @@ input[type="range"]::-moz-range-thumb {
         <div class="micro-separator"></div>
         <button class="micro-btn" id="pauseBtn" type="button" title="在文中插入停顿，精准掌控音频节奏，支持选择预设时长或直接输入秒数">&lt;#&gt; 停顿</button>
         <button class="micro-btn" id="interjectionBtn" type="button" title="点击插入或输入生动的语气词，让语音更具感染力 系统仅支持预设库内的语气词标签">（）语气词</button>
-        <button class="longmode-btn" id="longModeBtn" type="button" title="开启长文本模式后，最多能支持生成 20 万字符的音频，但需要更长的等待时间">
-          <span>长文模式</span>
-          <span class="longmode-stream" id="longModeStreamTag" style="display:none;">流式输出</span>
-        </button>
       </div>
       <div class="micro-popover" id="microPopover"></div>
       <div class="divider"></div>
@@ -3082,10 +3505,11 @@ input[type="range"]::-moz-range-thumb {
       </div>
 
       <div class="toolbar-right">
-        <button class="icon-pill" id="translateBtn" type="button" title="翻译成英文">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-            <path d="M5 6h9M9.5 6c0 4.7-1.5 8.3-4.3 10.9M7.8 11c1.1 1.6 2.7 2.9 4.8 4M14.5 5.5h4M16.5 5.5c0 5.5-1 8.6-3.1 11.2M13.2 18h6.3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+        <button class="icon-pill" id="translateBtn" type="button" title="将中文翻译成英文">
+          <span class="translate-glyph" aria-hidden="true">
+            <i class="translate-glyph-zh">文</i>
+            <i class="translate-glyph-en">A</i>
+          </span>
         </button>
 
         <button class="icon-pill active" id="settingsBtn" type="button" title="打开设置">
@@ -3093,6 +3517,13 @@ input[type="range"]::-moz-range-thumb {
             <path d="M4 7h6M14 7h6M4 17h10M18 17h2M10 7a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm8 10a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM15 12h5M4 12h7M13 12a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
           </svg>
         </button>
+
+        <div class="longmode-inline">
+          <span class="longmode-inline-label">长文模式</span>
+          <button class="longmode-toggle" id="longModeToggle" type="button" role="switch" aria-checked="false" title="开启长文本模式后，最多支持生成 20 万字符的音频，但需要更长的等待时间"></button>
+        </div>
+
+        <div class="toolbar-divider" aria-hidden="true"></div>
 
         <div class="counter"><span id="charCount">0</span>/5000</div>
 
@@ -3122,7 +3553,13 @@ input[type="range"]::-moz-range-thumb {
                   </div>
                   <div class="voice-meta">
                     <div class="voice-name-row">
-                    <div class="voice-name" id="voiceName">Coco Li</div>
+                      <div class="voice-name" id="voiceName">Coco Li</div>
+                      <button class="voice-name-copy" id="copyCurrentVoiceNameBtn" type="button" title="复制音色名称">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                          <rect x="9" y="9" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.8"/>
+                          <path d="M6 15H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                        </svg>
+                      </button>
                       <div class="section-tag status" id="voiceEffectBadge">叠加效果器</div>
                     </div>
                     <div class="voice-desc" id="voiceDesc">平静、年轻、可信赖</div>
@@ -3132,7 +3569,7 @@ input[type="range"]::-moz-range-thumb {
                 <div class="voice-actions">
                   <div class="lang-dropdown" id="langDropdown">
                     <button class="lang-trigger" type="button" id="langTrigger">
-                      <span id="langLabel">中文</span>
+                      <span id="langLabel">中文-普通话</span>
                       <span class="arrow">▾</span>
                     </button>
                     <div class="lang-menu" id="langMenu"></div>
@@ -3249,6 +3686,8 @@ input[type="range"]::-moz-range-thumb {
         </button>
       </div>
 
+      <div class="voice-filter-summary" id="voiceFilterSummary"></div>
+
       <div class="voice-library-list" id="voiceLibraryList"></div>
     </div>
   </div>
@@ -3315,27 +3754,22 @@ input[type="range"]::-moz-range-thumb {
       </button>
     </div>
     <div class="register-body">
-      <div class="register-section">
+      <div class="register-section" id="registerNameSection">
         <div class="register-label">音色名称</div>
         <input class="register-input" id="registerNameInput" type="text" placeholder="输入你的专属音色名称">
       </div>
 
-      <div class="register-section">
+      <div class="register-section" id="registerTagSection">
         <div class="register-label">标签</div>
         <div class="register-chip-row" id="registerTagRow"></div>
       </div>
 
-      <div class="register-section">
-        <div class="register-label">场景</div>
-        <div class="register-chip-row" id="registerSceneRow"></div>
-      </div>
-
-      <div class="register-section">
+      <div class="register-section" id="registerDescSection">
         <div class="register-label">音色描述</div>
         <textarea class="register-textarea" id="registerDescInput" placeholder="请输入音色描述"></textarea>
       </div>
 
-      <div class="register-actions">
+      <div class="register-actions" id="registerActions">
         <button class="register-back" id="registerBackBtn" type="button">返回</button>
         <button class="register-save" id="registerSaveBtn" type="button">保存音色</button>
       </div>
@@ -3357,6 +3791,44 @@ input[type="range"]::-moz-range-thumb {
     <div class="leave-confirm-actions">
       <button class="leave-confirm-btn" id="leaveConfirmCancel" type="button">取消</button>
       <button class="leave-confirm-btn-primary" id="leaveConfirmSubmit" type="button">确认</button>
+    </div>
+  </div>
+</div>
+
+<div class="edit-voice-modal" id="editVoiceModal">
+  <div class="edit-voice-panel">
+    <div class="edit-voice-head">
+      <div class="edit-voice-title">编辑</div>
+      <button class="edit-voice-close" id="editVoiceModalClose" type="button" title="关闭编辑弹窗">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="edit-voice-body">
+      <div class="edit-voice-label">音色名</div>
+      <input class="edit-voice-input" id="editVoiceNameInput" type="text" placeholder="请输入音色名称">
+    </div>
+    <div class="edit-voice-actions">
+      <button class="edit-voice-save" id="editVoiceSaveBtn" type="button">保存音色</button>
+    </div>
+  </div>
+</div>
+
+<div class="delete-voice-modal" id="deleteVoiceModal">
+  <div class="delete-voice-panel">
+    <div class="delete-voice-head">
+      <div class="delete-voice-title">删除音色</div>
+      <button class="delete-voice-close" id="deleteVoiceModalClose" type="button" title="关闭删除确认">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="delete-voice-copy" id="deleteVoiceCopy">您确定要删除这个音色吗？此操作无法撤销</div>
+    <div class="delete-voice-actions">
+      <button class="delete-voice-cancel" id="deleteVoiceCancelBtn" type="button">取消</button>
+      <button class="delete-voice-confirm" id="deleteVoiceConfirmBtn" type="button">删除</button>
     </div>
   </div>
 </div>
@@ -3519,8 +3991,6 @@ const ageOptions = [
   { id: 'senior', label: '老年' }
 ];
 
-const registerSceneOptions = ['有声读物', '影视配音', 'Vlog独白', '教育培训', '智能客服', '电台播客'];
-
 const defaults = {
   model: 'hd',
   text: '',
@@ -3540,8 +4010,12 @@ const defaults = {
   voiceFilters: emptyVoiceFilters(),
   draftVoiceFilters: emptyVoiceFilters(),
   registerModalOpen: false,
-  registerScenes: [],
-  pendingRegisterVoiceId: null,
+  registerGender: '',
+  editVoiceModalOpen: false,
+  editVoiceId: null,
+  editVoiceName: '',
+  deleteVoiceModalOpen: false,
+  pendingDeleteVoiceId: null,
   cloneLeaveConfirmOpen: false,
   cloneToastOpen: false,
   cloneToastMessage: '录音时长需在 10 秒到 60 秒之间',
@@ -3622,6 +4096,10 @@ function getSelectedVoice() {
   return match || available[0] || voices[0];
 }
 
+function getVoiceById(id) {
+  return voices.find((voice) => voice.id === id) || null;
+}
+
 function matchesVoiceFiltersAndSearch(voice) {
   const keyword = state.voiceSearch.trim().toLowerCase();
   const filters = state.voiceFilters;
@@ -3683,8 +4161,7 @@ function getCloneTextMeta() {
 
 function getRegisterTags() {
   return [
-    cloneTextOptions.find((item) => item.id === state.cloneTextLanguage)?.label || '中文-普通话',
-    '个人音色'
+    cloneTextOptions.find((item) => item.id === state.cloneTextLanguage)?.label || '中文-普通话'
   ];
 }
 
@@ -3704,7 +4181,7 @@ function resetCloneComposer() {
   state.cloneConsent = false;
   state.cloneName = '';
   state.cloneDescription = '';
-  state.registerScenes = [];
+  state.registerGender = '';
   state.registerModalOpen = false;
 }
 
@@ -3728,7 +4205,7 @@ function openCloneView() {
   state.cloneConsent = false;
   state.cloneName = '';
   state.cloneDescription = '';
-  state.registerScenes = [];
+  state.registerGender = '';
   state.registerModalOpen = false;
   state.cloneLeaveConfirmOpen = false;
 }
@@ -3743,6 +4220,29 @@ function leaveCloneView() {
   state.cloneView = 'list';
   state.cloneGeneratedResult = null;
   state.cloneLeaveConfirmOpen = false;
+}
+
+function closeRegisterModal() {
+  state.registerModalOpen = false;
+}
+
+function closeEditVoiceModal() {
+  state.editVoiceModalOpen = false;
+  state.editVoiceId = null;
+  state.editVoiceName = '';
+}
+
+function closeDeleteVoiceModal() {
+  state.deleteVoiceModalOpen = false;
+  state.pendingDeleteVoiceId = null;
+}
+
+function playVoicePreview(voiceId) {
+  const voice = getVoiceById(voiceId);
+  if (!voice) {
+    return;
+  }
+  showCloneToast(`正在播放 ${voice.name} 的录音预览`);
 }
 
 function requestLeaveCloneView() {
@@ -3777,13 +4277,12 @@ function finishCloneRecording() {
 }
 
 function generateCloneResultPreview() {
-  const languageLabel = getLanguageMeta(state.cloneTextLanguage)?.detectLabel || getLanguageMeta(state.cloneTextLanguage)?.label || state.cloneTextLanguage;
   state.cloneGeneratedResult = {
     id: `clone-preview-${Date.now()}`,
     title: '音色预览',
-    subtitle: `${languageLabel} · ${state.cloneDenoise ? '已开启去噪' : '原始样本'}`
+    subtitle: ''
   };
-  state.cloneView = 'result';
+  state.cloneView = 'clone';
 }
 
 function ensureVoiceValidity() {
@@ -3959,11 +4458,11 @@ function renderModelMenu() {
 function renderLanguageMenu() {
   const dropdown = document.getElementById('langDropdown');
   const menu = document.getElementById('langMenu');
-  const label = getLanguageMeta(state.language)?.label || '中文';
+  const label = getLanguageMeta(state.language)?.detectLabel || getLanguageMeta(state.language)?.label || '中文-普通话';
   document.getElementById('langLabel').textContent = label;
   dropdown.classList.toggle('open', state.langMenuOpen);
   menu.innerHTML = languages.map((item) => `
-    <button class="lang-option ${item.id === state.language ? 'active' : ''}" type="button" data-lang-option="${item.id}">${item.label}</button>
+    <button class="lang-option ${item.id === state.language ? 'active' : ''}" type="button" data-lang-option="${item.id}">${item.detectLabel || item.label}</button>
   `).join('');
 }
 
@@ -4089,10 +4588,11 @@ function renderMyVoicesView() {
   const remainingSlotsInView = Math.max(0, 10 - visibleCount);
   const cloneTextMeta = getCloneTextMeta();
 
-  if (state.cloneView === 'clone') {
+  if (state.cloneView === 'clone' || state.cloneView === 'result') {
     const sampleLimitReached = state.cloneSamples.length >= 3;
     const canStop = state.cloneElapsedSec >= 10;
     const submitDisabled = state.cloneSamples.length === 0 || !state.cloneConsent || state.cloneSlotsRemaining <= 0;
+    const result = state.cloneGeneratedResult;
 
     return `
       <div class="my-voices-panel">
@@ -4178,53 +4678,39 @@ function renderMyVoicesView() {
             <span>我已阅读并同意《声音克隆功能使用规则》；我确认对所上传的声音样本具有充分、合法、必要的权利或授权，并同意将其用于使用声音克隆功能。</span>
           </div>
 
-          <div class="clone-submit-row">
-            <div class="clone-submit-meta">${state.cloneConsent ? `剩余音色槽位：${state.cloneSlotsRemaining}/10` : '请先勾选同意后再提交生成'}</div>
-            <button class="clone-submit-btn-inline" id="submitCloneBtn" type="button" title="${state.cloneConsent ? '提交生成' : '请先勾选同意后提交生成'}" ${submitDisabled ? 'disabled' : ''}>提交生成</button>
-          </div>
-        </div>
-      </div>
-    `;
-  }
+          ${result ? `
+            <div class="clone-result-view">
+              <div class="clone-result-top">
+                <div class="clone-result-slots">剩余音色槽位：${state.cloneSlotsRemaining}/10</div>
+                <button class="clone-result-regen" id="regenCloneBtn" type="button">
+                  <span>✦</span>
+                  <span>重新生成</span>
+                </button>
+              </div>
 
-  if (state.cloneView === 'result') {
-    const result = state.cloneGeneratedResult || {
-      title: '音色预览',
-      subtitle: `${getLanguageMeta(state.cloneTextLanguage)?.detectLabel || state.cloneTextLanguage} · 预览结果`
-    };
+              <div class="clone-result-title">生成音色结果</div>
+              <div class="clone-result-card">
+                <button class="clone-result-play" type="button" id="cloneResultPlayBtn" title="播放生成音色预览">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                    <path d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"/>
+                  </svg>
+                </button>
+                <div class="clone-result-meta">
+                  <div class="clone-result-name">${result.title}</div>
+                  ${result.subtitle ? `<div class="clone-result-copy">${result.subtitle}</div>` : ''}
+                </div>
+              </div>
 
-    return `
-      <div class="my-voices-panel">
-        <div class="clone-result-view">
-          <div class="clone-consent-inline" data-clone-consent-row role="checkbox" aria-checked="${state.cloneConsent ? 'true' : 'false'}" tabindex="0">
-            <input id="cloneConsentCheckbox" type="checkbox" ${state.cloneConsent ? 'checked' : ''}>
-            <span>我已阅读并同意《声音克隆功能使用规则》；我确认对所上传的声音样本具有充分、合法、必要的权利或授权，并同意将其用于使用声音克隆功能。我承诺不将本功能用于违法违规的目的或用途。</span>
-          </div>
-
-          <div class="clone-result-top">
-            <div class="clone-result-slots">剩余音色槽位：${state.cloneSlotsRemaining}/10</div>
-            <button class="clone-result-regen" id="regenCloneBtn" type="button">
-              <span>✦</span>
-              <span>重新生成</span>
-            </button>
-          </div>
-
-          <div class="clone-result-title">生成音色结果</div>
-          <div class="clone-result-card">
-            <button class="clone-result-play" type="button" id="cloneResultPlayBtn" title="播放生成音色预览">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-                <path d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"/>
-              </svg>
-            </button>
-            <div class="clone-result-meta">
-              <div class="clone-result-name">${result.title}</div>
-              <div class="clone-result-copy">${result.subtitle}</div>
+              <div class="clone-result-confirm-row">
+                <button class="clone-result-confirm" id="confirmCloneResultBtn" type="button" title="确认并前往音色登记">确认</button>
+              </div>
             </div>
-          </div>
-
-          <div class="clone-result-confirm-row">
-            <button class="clone-result-confirm" id="confirmCloneResultBtn" type="button" title="${state.cloneConsent ? '确认并前往音色登记' : '请先勾选同意后确认'}" ${state.cloneConsent ? '' : 'disabled'}>确认</button>
-          </div>
+          ` : `
+            <div class="clone-submit-row">
+              <div class="clone-submit-meta">${state.cloneConsent ? `剩余音色槽位：${state.cloneSlotsRemaining}/10` : '请先勾选同意后再提交生成'}</div>
+              <button class="clone-submit-btn-inline" id="submitCloneBtn" type="button" title="${state.cloneConsent ? '提交生成' : '请先勾选同意后提交生成'}" ${submitDisabled ? 'disabled' : ''}>提交生成</button>
+            </div>
+          `}
         </div>
       </div>
     `;
@@ -4259,23 +4745,11 @@ function renderMyVoicesView() {
             <span>＋</span>
             <span>克隆新音色</span>
           </button>
-          <div class="my-voices-toolbar-left">
-            <div class="my-voices-summary">剩余音色槽位 ${remainingSlotsInView}/10</div>
-          </div>
+        <div class="my-voices-toolbar-left">
+          <div class="my-voices-summary">剩余音色槽位 ${remainingSlotsInView}/10</div>
         </div>
-        <div class="my-voices-empty">
-          <div class="my-voices-empty-inner">
-            <div class="my-voices-empty-mic">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                <path d="M12 3.6c2.1 0 3.8 1.7 3.8 3.8v3.3c0 2.1-1.7 3.8-3.8 3.8s-3.8-1.7-3.8-3.8V7.4c0-2.1 1.7-3.8 3.8-3.8Z" fill="currentColor"/>
-                <path d="M6.9 11.7c0 3 2.1 5 5.1 5s5.1-2 5.1-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M12 16.8v3.4M9.7 20.2h4.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div class="my-voices-empty-title">没有符合条件的我的音色</div>
-            <div class="my-voices-empty-copy">试试修改搜索词或筛选条件</div>
-          </div>
-        </div>
+      </div>
+        <div class="my-voices-no-match">暂无符合筛选条件的语音</div>
       </div>
     `;
   }
@@ -4320,6 +4794,7 @@ function renderMyVoicesView() {
               </div>
             </div>
             <div class="my-voice-actions">
+              <span class="voice-outline-btn">音色克隆</span>
               <button class="my-voice-pick ${voice.id === state.voice ? 'selected' : ''}" type="button" data-voice-select="${voice.id}">${voice.id === state.voice ? '已选' : '选择'}</button>
               <button class="voice-icon-btn ${voice.favorite ? 'active' : ''}" type="button" title="${voice.favorite ? '取消收藏' : '收藏'}" data-voice-favorite="${voice.id}">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
@@ -4342,6 +4817,22 @@ function renderMyVoicesView() {
                     </svg>
                     <span>复制 Voice ID</span>
                   </button>
+                  <button class="voice-copy-btn" type="button" data-edit-voice="${voice.id}">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                      <path d="M4 20h4l10.5-10.5a1.8 1.8 0 0 0 0-2.5l-1.5-1.5a1.8 1.8 0 0 0-2.5 0L4 16v4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                      <path d="m13.5 6.5 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    </svg>
+                    <span>编辑</span>
+                  </button>
+                  <button class="voice-copy-btn" type="button" data-delete-voice="${voice.id}">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                      <path d="M4 7h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                      <path d="M9 4h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                      <path d="M7 7l.7 10.1A2 2 0 0 0 9.7 19h4.6a2 2 0 0 0 2-1.9L17 7" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                      <path d="M10 11v4M14 11v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    </svg>
+                    <span>删除</span>
+                  </button>
                 </div>
               ` : ''}
             </div>
@@ -4357,6 +4848,7 @@ function renderVoiceModal() {
   const list = document.getElementById('voiceLibraryList');
   const searchInput = document.getElementById('voiceSearchInput');
   const toolbar = document.querySelector('.voice-toolbar');
+  const filterSummary = document.getElementById('voiceFilterSummary');
   const tabs = document.getElementById('voiceTabs');
 
   modal.classList.toggle('open', state.voiceModalOpen);
@@ -4378,6 +4870,8 @@ function renderVoiceModal() {
   const clonePageOpen = state.cloneView !== 'list';
   tabs.style.display = clonePageOpen ? 'none' : 'flex';
   toolbar.style.display = clonePageOpen ? 'none' : 'grid';
+  filterSummary.style.display = clonePageOpen ? 'none' : '';
+  renderVoiceFilterSummary();
 
   if (state.voiceTab === 'mine') {
     list.innerHTML = renderMyVoicesView();
@@ -4388,13 +4882,14 @@ function renderVoiceModal() {
   list.innerHTML = visible.map((voice) => `
     <div class="voice-library-item">
       <div class="voice-library-main">
-        <div class="voice-cover" data-cover="${voice.id}"></div>
+        <button class="voice-preview-play" type="button" data-my-voice-play="${voice.id}" title="播放录音">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"/>
+          </svg>
+        </button>
         <div class="voice-library-meta">
           <div class="voice-library-name">${voice.name}</div>
           <div class="voice-library-sub">${voice.subtitle}</div>
-          <div class="voice-library-tags">
-            ${voice.tags.map((tag, index) => `<span class="voice-pill ${index === 0 ? 'featured' : ''}">${tag}</span>`).join('')}
-          </div>
         </div>
       </div>
       <div class="voice-library-actions">
@@ -4428,6 +4923,72 @@ function renderVoiceModal() {
     </div>
   `).join('') || `
     <div class="voice-empty-state">暂无符合筛选条件的语音</div>
+  `;
+}
+
+function getVoiceFilterEntries(filters = state.voiceFilters) {
+  const entries = [];
+
+  if (filters.language) {
+    entries.push({
+      key: 'language',
+      label: '语言',
+      value: getLanguageMeta(filters.language)?.detectLabel || getLanguageMeta(filters.language)?.label || filters.language
+    });
+  }
+
+  if (filters.accent) {
+    entries.push({
+      key: 'accent',
+      label: '口音',
+      value: filters.accent
+    });
+  }
+
+  if (filters.gender && filters.gender !== 'all') {
+    entries.push({
+      key: 'gender',
+      label: '性别',
+      value: genderOptions.find((item) => item.id === filters.gender)?.label || filters.gender
+    });
+  }
+
+  if (filters.age) {
+    entries.push({
+      key: 'age',
+      label: '年龄',
+      value: ageOptions.find((item) => item.id === filters.age)?.label || filters.age
+    });
+  }
+
+  return entries;
+}
+
+function renderVoiceFilterSummary() {
+  const summary = document.getElementById('voiceFilterSummary');
+  const entries = getVoiceFilterEntries();
+
+  summary.classList.toggle('open', entries.length > 0);
+  if (!entries.length) {
+    summary.innerHTML = '';
+    return;
+  }
+
+  summary.innerHTML = `
+    ${entries.map((entry) => `
+      <button class="voice-filter-chip" type="button" data-clear-voice-filter="${entry.key}" title="移除${entry.label}筛选">
+        <span class="voice-filter-chip-key">${entry.label}</span>
+        <span class="voice-filter-chip-divider" aria-hidden="true"></span>
+        <span>${entry.value}</span>
+        <span class="voice-filter-chip-close" aria-hidden="true">×</span>
+      </button>
+    `).join('')}
+    <button class="voice-filter-reset" id="clearVoiceFiltersBtn" type="button" title="重置所有筛选">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 5a7 7 0 1 1-6.1 3.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M5 5v4h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
   `;
 }
 
@@ -4474,18 +5035,41 @@ function renderLeaveConfirmModal() {
   modal.classList.toggle('open', state.cloneLeaveConfirmOpen);
 }
 
+function renderEditVoiceModal() {
+  const modal = document.getElementById('editVoiceModal');
+  const input = document.getElementById('editVoiceNameInput');
+  const saveBtn = document.getElementById('editVoiceSaveBtn');
+
+  modal.classList.toggle('open', state.editVoiceModalOpen);
+  input.value = state.editVoiceName || '';
+  saveBtn.disabled = !state.editVoiceName.trim();
+}
+
+function renderDeleteVoiceModal() {
+  const modal = document.getElementById('deleteVoiceModal');
+  const copy = document.getElementById('deleteVoiceCopy');
+  const voice = state.pendingDeleteVoiceId ? getVoiceById(state.pendingDeleteVoiceId) : null;
+
+  modal.classList.toggle('open', state.deleteVoiceModalOpen);
+  copy.innerHTML = voice
+    ? `您确定要删除这个音色吗？ “${voice.name}”？<br>此操作无法撤销`
+    : '您确定要删除这个音色吗？<br>此操作无法撤销';
+}
+
 function renderMicroControls() {
   const emotionBtn = document.getElementById('emotionBtn');
-  const longModeBtn = document.getElementById('longModeBtn');
-  const streamTag = document.getElementById('longModeStreamTag');
   const hasSelection = state.selectionEnd > state.selectionStart;
 
   emotionBtn.disabled = !hasSelection;
   emotionBtn.classList.toggle('active', state.microPopoverOpen && state.microPopoverType === 'emotion');
   document.getElementById('pauseBtn').classList.toggle('active', state.microPopoverOpen && state.microPopoverType === 'pause');
   document.getElementById('interjectionBtn').classList.toggle('active', state.microPopoverOpen && state.microPopoverType === 'interjection');
-  longModeBtn.classList.toggle('active', state.longTextMode);
-  streamTag.style.display = state.longTextMode ? 'inline' : 'none';
+}
+
+function renderLongModeToggle() {
+  const toggle = document.getElementById('longModeToggle');
+  toggle.classList.toggle('on', state.longTextMode);
+  toggle.setAttribute('aria-checked', state.longTextMode ? 'true' : 'false');
 }
 
 function renderMicroPopover() {
@@ -4531,19 +5115,46 @@ function renderMicroPopover() {
 
 function renderRegisterModal() {
   const modal = document.getElementById('registerModal');
+  const title = document.querySelector('.register-title');
+  const nameSection = document.getElementById('registerNameSection');
+  const tagSection = document.getElementById('registerTagSection');
+  const descSection = document.getElementById('registerDescSection');
+  const actions = document.getElementById('registerActions');
+  const backBtn = document.getElementById('registerBackBtn');
   const nameInput = document.getElementById('registerNameInput');
   const descInput = document.getElementById('registerDescInput');
   const tagRow = document.getElementById('registerTagRow');
-  const sceneRow = document.getElementById('registerSceneRow');
   const saveBtn = document.getElementById('registerSaveBtn');
 
   modal.classList.toggle('open', state.registerModalOpen);
+  title.textContent = '音色登记';
+  nameSection.style.display = 'grid';
+  tagSection.style.display = 'grid';
+  descSection.style.display = 'grid';
+  backBtn.style.display = 'inline-flex';
+  actions.style.justifyContent = 'flex-end';
+  nameInput.placeholder = '输入你的专属音色名称';
   nameInput.value = state.cloneName;
   descInput.value = state.cloneDescription || '';
-  tagRow.innerHTML = getRegisterTags().map((tag) => `<div class="register-chip">${tag}</div>`).join('');
-  sceneRow.innerHTML = registerSceneOptions.map((scene) => `
-    <button class="register-chip scene ${state.registerScenes.includes(scene) ? 'active' : ''}" type="button" data-register-scene="${scene}">${scene}</button>
-  `).join('');
+  tagRow.innerHTML = `
+    <div class="register-tag-grid">
+      <div class="register-tag-pill">
+        <span class="register-tag-value">${getRegisterTags()[0]}</span>
+        <span class="register-tag-close">×</span>
+      </div>
+      <label class="register-tag-select-wrap">
+        <select class="register-tag-select ${state.registerGender ? '' : 'is-placeholder'}" id="registerGenderSelect">
+          <option value="">请选择性别</option>
+          ${genderOptions
+            .filter((item) => item.id !== 'all')
+            .map((item) => `<option value="${item.id}" ${item.id === state.registerGender ? 'selected' : ''}>${item.label}</option>`)
+            .join('')}
+        </select>
+        <span class="register-tag-arrow">▾</span>
+      </label>
+    </div>
+  `;
+  saveBtn.textContent = '保存音色';
   saveBtn.disabled = !state.cloneName.trim();
 }
 
@@ -4664,12 +5275,15 @@ function render() {
   renderLanguageMenu();
   renderRecordingState();
   renderMicroControls();
+  renderLongModeToggle();
   renderMicroPopover();
   renderVoiceCard();
   renderVoiceModal();
   renderFilterModal();
   renderCloneToast();
   renderLeaveConfirmModal();
+  renderEditVoiceModal();
+  renderDeleteVoiceModal();
   renderRegisterModal();
   renderBasicSliders();
   renderAdvancedSliders();
@@ -4735,11 +5349,24 @@ document.addEventListener('click', (event) => {
     return;
   }
 
-  if (event.target.closest('#longModeBtn')) {
+  if (event.target.closest('#longModeToggle')) {
     state.longTextMode = !state.longTextMode;
     clampVoiceTextLength();
-    closeMicroPopover();
     render();
+    return;
+  }
+
+  if (event.target.closest('#langTrigger')) {
+    state.langMenuOpen = !state.langMenuOpen;
+    renderLanguageMenu();
+    return;
+  }
+
+  if (event.target.closest('#copyCurrentVoiceNameBtn')) {
+    const selected = getSelectedVoice();
+    copyText(selected.name).then((copied) => {
+      showCloneToast(copied ? `已复制音色名称：${selected.name}` : `复制失败，请手动复制：${selected.name}`);
+    });
     return;
   }
 
@@ -4749,12 +5376,6 @@ document.addEventListener('click', (event) => {
     }
     state.voiceModalOpen = true;
     renderVoiceModal();
-    return;
-  }
-
-  if (event.target.closest('#langTrigger')) {
-    state.langMenuOpen = !state.langMenuOpen;
-    renderLanguageMenu();
     return;
   }
 
@@ -4820,10 +5441,89 @@ document.addEventListener('click', (event) => {
   if (event.target.closest('[data-copy-voice-id]')) {
     const voiceId = event.target.closest('[data-copy-voice-id]').dataset.copyVoiceId;
     copyText(voiceId).then((copied) => {
-      window.alert(copied ? `已复制 Voice ID：${voiceId}` : `复制失败，请手动复制：${voiceId}`);
+      showCloneToast(copied ? `已复制 Voice ID：${voiceId}` : `复制失败，请手动复制：${voiceId}`);
     });
     state.voiceActionMenuId = null;
     renderVoiceModal();
+    return;
+  }
+
+  if (event.target.closest('[data-my-voice-play]')) {
+    const voiceId = event.target.closest('[data-my-voice-play]').dataset.myVoicePlay;
+    playVoicePreview(voiceId);
+    state.voiceActionMenuId = null;
+    render();
+    return;
+  }
+
+  if (event.target.closest('[data-edit-voice]')) {
+    const voiceId = event.target.closest('[data-edit-voice]').dataset.editVoice;
+    const voice = getVoiceById(voiceId);
+    if (!voice) {
+      return;
+    }
+    state.editVoiceId = voiceId;
+    state.editVoiceName = voice.name;
+    state.editVoiceModalOpen = true;
+    state.voiceActionMenuId = null;
+    render();
+    return;
+  }
+
+  if (event.target.closest('[data-delete-voice]')) {
+    const voiceId = event.target.closest('[data-delete-voice]').dataset.deleteVoice;
+    const voice = getVoiceById(voiceId);
+    if (!voice) {
+      return;
+    }
+    state.pendingDeleteVoiceId = voiceId;
+    state.deleteVoiceModalOpen = true;
+    state.voiceActionMenuId = null;
+    render();
+    return;
+  }
+
+  if (event.target.closest('#editVoiceModalClose')) {
+    closeEditVoiceModal();
+    render();
+    return;
+  }
+
+  if (event.target.closest('#editVoiceSaveBtn')) {
+    if (!state.editVoiceName.trim() || !state.editVoiceId) {
+      return;
+    }
+    const voice = getVoiceById(state.editVoiceId);
+    if (voice) {
+      voice.name = state.editVoiceName.trim();
+      showCloneToast(`已保存音色名：${voice.name}`);
+    }
+    closeEditVoiceModal();
+    render();
+    return;
+  }
+
+  if (event.target.closest('#deleteVoiceModalClose') || event.target.closest('#deleteVoiceCancelBtn')) {
+    closeDeleteVoiceModal();
+    render();
+    return;
+  }
+
+  if (event.target.closest('#deleteVoiceConfirmBtn')) {
+    let deletedVoiceName = '';
+    if (state.pendingDeleteVoiceId) {
+      const voiceIndex = voices.findIndex((item) => item.id === state.pendingDeleteVoiceId);
+      if (voiceIndex >= 0) {
+        deletedVoiceName = voices[voiceIndex].name;
+        voices.splice(voiceIndex, 1);
+      }
+    }
+    closeDeleteVoiceModal();
+    ensureVoiceValidity();
+    if (deletedVoiceName) {
+      showCloneToast(`已删除音色：${deletedVoiceName}`);
+    }
+    render();
     return;
   }
 
@@ -4929,24 +5629,15 @@ document.addEventListener('click', (event) => {
 
   if (event.target.closest('#confirmCloneResultBtn')) {
     state.registerModalOpen = true;
-    state.registerScenes = [];
     state.cloneName = '';
     state.cloneDescription = '';
+    state.registerGender = '';
     render();
     return;
   }
 
   if (event.target.closest('#registerModalClose') || event.target.closest('#registerBackBtn')) {
-    state.registerModalOpen = false;
-    renderRegisterModal();
-    return;
-  }
-
-  if (event.target.closest('[data-register-scene]')) {
-    const scene = event.target.closest('[data-register-scene]').dataset.registerScene;
-    state.registerScenes = state.registerScenes.includes(scene)
-      ? state.registerScenes.filter((item) => item !== scene)
-      : [...state.registerScenes, scene];
+    closeRegisterModal();
     renderRegisterModal();
     return;
   }
@@ -4955,23 +5646,25 @@ document.addEventListener('click', (event) => {
     if (!state.cloneName.trim()) {
       return;
     }
+    const description = state.cloneDescription.trim();
+    const savedName = state.cloneName.trim();
+
     const pendingId = `pending-${Date.now()}`;
     state.pendingCloneVoices.unshift({
       id: pendingId,
-      name: state.cloneName.trim(),
+      name: savedName,
       language: state.cloneTextLanguage
     });
     state.cloneSlotsRemaining = Math.max(0, state.cloneSlotsRemaining - 1);
-    state.registerModalOpen = false;
+    closeRegisterModal();
     leaveCloneView();
     state.cloneSamples = [];
     state.cloneDenoise = false;
-    const description = state.cloneDescription.trim();
-    const registerScenes = [...state.registerScenes];
-    const savedName = state.cloneName.trim();
     state.cloneName = '';
     state.cloneDescription = '';
-    state.registerScenes = [];
+    const selectedGender = state.registerGender;
+    const selectedGenderLabel = genderOptions.find((item) => item.id === selectedGender)?.label;
+    state.registerGender = '';
     render();
 
     window.setTimeout(() => {
@@ -4983,12 +5676,14 @@ document.addEventListener('click', (event) => {
           id: generatedId,
           name: savedName || pending.name,
           subtitle: 'myself',
-          desc: description || `${getLanguageMeta(pending.language)?.detectLabel || cloneTextOptions.find((item) => item.id === pending.language)?.label || pending.language} · ${registerScenes[0] || '基于个人样本生成'}`,
+          desc: description || `${getLanguageMeta(pending.language)?.detectLabel || cloneTextOptions.find((item) => item.id === pending.language)?.label || pending.language} · 基于个人样本生成`,
           languages: [pending.language],
-          tags: ['我的音色', ...(registerScenes.slice(0, 1))],
+          tags: ['音色克隆', ...(selectedGenderLabel ? [selectedGenderLabel] : [])],
           libraryTags: ['音色克隆'],
+          cloneGenerated: true,
           mine: true,
-          favorite: false
+          favorite: false,
+          gender: selectedGender || ''
         });
         state.voice = generatedId;
         render();
@@ -5126,6 +5821,25 @@ document.addEventListener('click', (event) => {
     return;
   }
 
+  if (event.target.closest('[data-clear-voice-filter]')) {
+    const key = event.target.closest('[data-clear-voice-filter]').dataset.clearVoiceFilter;
+    if (key === 'gender') {
+      state.voiceFilters.gender = 'all';
+    } else {
+      state.voiceFilters[key] = '';
+    }
+    state.draftVoiceFilters = structuredClone(state.voiceFilters);
+    render();
+    return;
+  }
+
+  if (event.target.closest('#clearVoiceFiltersBtn')) {
+    state.voiceFilters = emptyVoiceFilters();
+    state.draftVoiceFilters = emptyVoiceFilters();
+    render();
+    return;
+  }
+
   if (!event.target.closest('#modelDropdown')) {
     state.modelMenuOpen = false;
   }
@@ -5142,7 +5856,7 @@ document.addEventListener('click', (event) => {
     closeMicroPopover();
   }
 
-  if (!event.target.closest('.voice-library-actions')) {
+  if (!event.target.closest('.voice-library-actions') && !event.target.closest('.my-voice-actions') && !event.target.closest('.voice-copy-menu')) {
     state.voiceActionMenuId = null;
   }
 
@@ -5164,7 +5878,21 @@ document.addEventListener('click', (event) => {
   if (!event.target.closest('.register-panel')) {
     const registerModal = event.target.closest('#registerModal');
     if (registerModal && event.target === registerModal) {
-      state.registerModalOpen = false;
+      closeRegisterModal();
+    }
+  }
+
+  if (!event.target.closest('.edit-voice-panel')) {
+    const editVoiceModal = event.target.closest('#editVoiceModal');
+    if (editVoiceModal && event.target === editVoiceModal) {
+      closeEditVoiceModal();
+    }
+  }
+
+  if (!event.target.closest('.delete-voice-panel')) {
+    const deleteVoiceModal = event.target.closest('#deleteVoiceModal');
+    if (deleteVoiceModal && event.target === deleteVoiceModal) {
+      closeDeleteVoiceModal();
     }
   }
 
@@ -5179,6 +5907,12 @@ document.addEventListener('click', (event) => {
 });
 
 document.addEventListener('input', (event) => {
+  if (event.target.matches('#editVoiceNameInput')) {
+    state.editVoiceName = event.target.value.slice(0, 30);
+    renderEditVoiceModal();
+    return;
+  }
+
   if (event.target.matches('#registerNameInput')) {
     state.cloneName = event.target.value.slice(0, 30);
     renderRegisterModal();
@@ -5213,6 +5947,12 @@ document.addEventListener('input', (event) => {
     return;
   }
 
+  if (event.target.matches('#registerGenderSelect')) {
+    state.registerGender = event.target.value;
+    renderRegisterModal();
+    return;
+  }
+
   if (event.target.matches('[data-basic-slider]')) {
     const key = event.target.dataset.basicSlider;
     state.basic[key] = Number(event.target.value);
@@ -5241,6 +5981,42 @@ document.addEventListener('change', (event) => {
 });
 
 document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    let handled = false;
+
+    if (state.deleteVoiceModalOpen) {
+      closeDeleteVoiceModal();
+      handled = true;
+    } else if (state.editVoiceModalOpen) {
+      closeEditVoiceModal();
+      handled = true;
+    } else if (state.registerModalOpen) {
+      closeRegisterModal();
+      handled = true;
+    }
+
+    if (handled) {
+      render();
+      return;
+    }
+  }
+
+  if (event.key === 'Enter' && event.target.matches('#editVoiceNameInput')) {
+    event.preventDefault();
+    if (!state.editVoiceName.trim() || !state.editVoiceId) {
+      return;
+    }
+    const voice = getVoiceById(state.editVoiceId);
+    if (!voice) {
+      return;
+    }
+    voice.name = state.editVoiceName.trim();
+    showCloneToast(`已保存音色名：${voice.name}`);
+    closeEditVoiceModal();
+    render();
+    return;
+  }
+
   const consentRow = event.target.closest('[data-clone-consent-row]');
   if (!consentRow) {
     return;
