@@ -1742,9 +1742,55 @@ body::after {
   gap: 3px;
 }
 
+.clone-inline-toggle-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .clone-inline-toggle-title {
   font-size: 14px;
   font-weight: 700;
+}
+
+.clone-inline-tooltip {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  color: #8f79ff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: help;
+}
+
+.clone-inline-tooltip svg {
+  width: 18px;
+  height: 18px;
+}
+
+.clone-inline-tooltip-bubble {
+  position: absolute;
+  left: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: min(520px, calc(100vw - 120px));
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(24, 27, 34, 0.98);
+  box-shadow: 0 22px 40px rgba(0, 0, 0, 0.35);
+  color: rgba(232, 238, 249, 0.92);
+  font-size: 13px;
+  line-height: 1.7;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+  z-index: 3;
+}
+
+.clone-inline-tooltip:hover .clone-inline-tooltip-bubble {
+  opacity: 1;
 }
 
 .clone-inline-toggle-copy {
@@ -1757,6 +1803,112 @@ body::after {
   gap: 10px;
 }
 
+.clone-result-view {
+  display: grid;
+  gap: 22px;
+}
+
+.clone-result-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.clone-result-slots {
+  color: rgba(182, 189, 202, 0.82);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.clone-result-regen {
+  min-width: 156px;
+  height: 46px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #8c78ff, #6d88ff);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.clone-result-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #f2f6fd;
+}
+
+.clone-result-card {
+  min-height: 132px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.03));
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 24px 28px;
+}
+
+.clone-result-play {
+  width: 64px;
+  height: 64px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #171a21;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.clone-result-meta {
+  display: grid;
+  gap: 8px;
+}
+
+.clone-result-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f7f9fc;
+}
+
+.clone-result-copy {
+  color: rgba(196, 203, 216, 0.82);
+  font-size: 14px;
+}
+
+.clone-result-confirm-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.clone-result-confirm {
+  min-width: 164px;
+  height: 48px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #8c78ff, #6d88ff);
+  color: #fff;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.clone-result-confirm:disabled {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(215, 223, 237, 0.36);
+  cursor: not-allowed;
+}
+
 .clone-consent-inline {
   display: flex;
   align-items: flex-start;
@@ -1764,6 +1916,7 @@ body::after {
   color: rgba(214, 220, 232, 0.84);
   font-size: 13px;
   line-height: 1.85;
+  cursor: pointer;
 }
 
 .clone-consent-inline input {
@@ -1814,11 +1967,20 @@ body::after {
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
+  box-shadow: 0 12px 28px rgba(109, 136, 255, 0.28);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease, background 0.18s ease, color 0.18s ease;
+}
+
+.clone-submit-btn-inline:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 32px rgba(109, 136, 255, 0.34);
 }
 
 .clone-submit-btn-inline:disabled {
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(215, 223, 237, 0.5);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(215, 223, 237, 0.36);
+  box-shadow: none;
+  opacity: 0.58;
   cursor: not-allowed;
 }
 
@@ -3384,6 +3546,7 @@ const defaults = {
   cloneToastOpen: false,
   cloneToastMessage: '录音时长需在 10 秒到 60 秒之间',
   cloneView: 'list',
+  cloneGeneratedResult: null,
   cloneRecording: false,
   cloneElapsedSec: 0,
   cloneTextLanguage: 'zh',
@@ -3533,6 +3696,7 @@ function formatTime(totalSec) {
 
 function resetCloneComposer() {
   state.cloneView = 'list';
+  state.cloneGeneratedResult = null;
   state.cloneRecording = false;
   state.cloneElapsedSec = 0;
   state.cloneSamples = [];
@@ -3555,6 +3719,7 @@ function openCloneView() {
     cloneRecordingInterval = null;
   }
   state.cloneView = 'clone';
+  state.cloneGeneratedResult = null;
   state.cloneRecording = false;
   state.cloneElapsedSec = 0;
   state.cloneTextLanguage = state.language;
@@ -3576,6 +3741,7 @@ function leaveCloneView() {
   state.cloneRecording = false;
   state.cloneElapsedSec = 0;
   state.cloneView = 'list';
+  state.cloneGeneratedResult = null;
   state.cloneLeaveConfirmOpen = false;
 }
 
@@ -3607,6 +3773,17 @@ function finishCloneRecording() {
       duration
     }
   ].slice(0, 3);
+  state.cloneDenoise = state.cloneSamples.length > 0;
+}
+
+function generateCloneResultPreview() {
+  const languageLabel = getLanguageMeta(state.cloneTextLanguage)?.detectLabel || getLanguageMeta(state.cloneTextLanguage)?.label || state.cloneTextLanguage;
+  state.cloneGeneratedResult = {
+    id: `clone-preview-${Date.now()}`,
+    title: '音色预览',
+    subtitle: `${languageLabel} · ${state.cloneDenoise ? '已开启去噪' : '原始样本'}`
+  };
+  state.cloneView = 'result';
 }
 
 function ensureVoiceValidity() {
@@ -3971,8 +4148,18 @@ function renderMyVoicesView() {
 
             <div class="clone-inline-toggle">
               <div class="clone-inline-toggle-label">
-                <div class="clone-inline-toggle-title">去噪开关</div>
-                <div class="clone-inline-toggle-copy">默认关闭，可在生成前按需打开</div>
+                <div class="clone-inline-toggle-title-row">
+                  <div class="clone-inline-toggle-title">去除噪音</div>
+                  <div class="clone-inline-tooltip" aria-label="去除噪音说明" tabindex="0">
+                    <svg viewBox="0 0 20 20" fill="none">
+                      <circle cx="10" cy="10" r="8.2" stroke="currentColor" stroke-width="1.6"/>
+                      <path d="M10 8.1v4.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                      <circle cx="10" cy="5.6" r="1" fill="currentColor"/>
+                    </svg>
+                    <div class="clone-inline-tooltip-bubble">若您的音频存在背景噪声，开启这个功能可以提升人声清晰度。若音频质量已经足够理想，建议关闭此功能，得到更好的克隆效果。</div>
+                  </div>
+                </div>
+                <div class="clone-inline-toggle-copy">检测到录音样本后会自动开启，可按需关闭</div>
               </div>
               <button class="switch ${state.cloneDenoise ? 'on' : ''}" id="cloneDenoiseToggle" type="button"></button>
             </div>
@@ -3986,14 +4173,57 @@ function renderMyVoicesView() {
             <div class="clone-trial-text">${cloneTextMeta.text}</div>
           </div>
 
-          <label class="clone-consent-inline">
+          <div class="clone-consent-inline" data-clone-consent-row role="checkbox" aria-checked="${state.cloneConsent ? 'true' : 'false'}" tabindex="0">
             <input id="cloneConsentCheckbox" type="checkbox" ${state.cloneConsent ? 'checked' : ''}>
             <span>我已阅读并同意《声音克隆功能使用规则》；我确认对所上传的声音样本具有充分、合法、必要的权利或授权，并同意将其用于使用声音克隆功能。</span>
-          </label>
+          </div>
 
           <div class="clone-submit-row">
-            <div class="clone-submit-meta">剩余音色槽位：${state.cloneSlotsRemaining}/10</div>
-            <button class="clone-submit-btn-inline" id="submitCloneBtn" type="button" ${submitDisabled ? 'disabled' : ''}>提交生成</button>
+            <div class="clone-submit-meta">${state.cloneConsent ? `剩余音色槽位：${state.cloneSlotsRemaining}/10` : '请先勾选同意后再提交生成'}</div>
+            <button class="clone-submit-btn-inline" id="submitCloneBtn" type="button" title="${state.cloneConsent ? '提交生成' : '请先勾选同意后提交生成'}" ${submitDisabled ? 'disabled' : ''}>提交生成</button>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  if (state.cloneView === 'result') {
+    const result = state.cloneGeneratedResult || {
+      title: '音色预览',
+      subtitle: `${getLanguageMeta(state.cloneTextLanguage)?.detectLabel || state.cloneTextLanguage} · 预览结果`
+    };
+
+    return `
+      <div class="my-voices-panel">
+        <div class="clone-result-view">
+          <div class="clone-consent-inline" data-clone-consent-row role="checkbox" aria-checked="${state.cloneConsent ? 'true' : 'false'}" tabindex="0">
+            <input id="cloneConsentCheckbox" type="checkbox" ${state.cloneConsent ? 'checked' : ''}>
+            <span>我已阅读并同意《声音克隆功能使用规则》；我确认对所上传的声音样本具有充分、合法、必要的权利或授权，并同意将其用于使用声音克隆功能。我承诺不将本功能用于违法违规的目的或用途。</span>
+          </div>
+
+          <div class="clone-result-top">
+            <div class="clone-result-slots">剩余音色槽位：${state.cloneSlotsRemaining}/10</div>
+            <button class="clone-result-regen" id="regenCloneBtn" type="button">
+              <span>✦</span>
+              <span>重新生成</span>
+            </button>
+          </div>
+
+          <div class="clone-result-title">生成音色结果</div>
+          <div class="clone-result-card">
+            <button class="clone-result-play" type="button" id="cloneResultPlayBtn" title="播放生成音色预览">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                <path d="M9 7.5v9l7-4.5-7-4.5Z" fill="currentColor"/>
+              </svg>
+            </button>
+            <div class="clone-result-meta">
+              <div class="clone-result-name">${result.title}</div>
+              <div class="clone-result-copy">${result.subtitle}</div>
+            </div>
+          </div>
+
+          <div class="clone-result-confirm-row">
+            <button class="clone-result-confirm" id="confirmCloneResultBtn" type="button" title="${state.cloneConsent ? '确认并前往音色登记' : '请先勾选同意后确认'}" ${state.cloneConsent ? '' : 'disabled'}>确认</button>
           </div>
         </div>
       </div>
@@ -4145,7 +4375,7 @@ function renderVoiceModal() {
       ? '搜索收藏音色'
       : '搜索语音库';
 
-  const clonePageOpen = state.cloneView === 'clone';
+  const clonePageOpen = state.cloneView !== 'list';
   tabs.style.display = clonePageOpen ? 'none' : 'flex';
   toolbar.style.display = clonePageOpen ? 'none' : 'grid';
 
@@ -4651,6 +4881,9 @@ document.addEventListener('click', (event) => {
   if (event.target.closest('[data-clone-delete]')) {
     const sampleId = event.target.closest('[data-clone-delete]').dataset.cloneDelete;
     state.cloneSamples = state.cloneSamples.filter((sample) => sample.id !== sampleId);
+    if (!state.cloneSamples.length) {
+      state.cloneDenoise = false;
+    }
     renderVoiceModal();
     return;
   }
@@ -4665,10 +4898,36 @@ document.addEventListener('click', (event) => {
     return;
   }
 
+  if (event.target.closest('[data-clone-consent-row]')) {
+    if (event.target.closest('#cloneConsentCheckbox')) {
+      return;
+    }
+    state.cloneConsent = !state.cloneConsent;
+    renderVoiceModal();
+    return;
+  }
+
   if (event.target.closest('#submitCloneBtn')) {
     if (!state.cloneSamples.length || !state.cloneConsent || state.cloneSlotsRemaining <= 0) {
       return;
     }
+    generateCloneResultPreview();
+    renderVoiceModal();
+    return;
+  }
+
+  if (event.target.closest('#regenCloneBtn')) {
+    generateCloneResultPreview();
+    renderVoiceModal();
+    return;
+  }
+
+  if (event.target.closest('#cloneResultPlayBtn')) {
+    showCloneToast('正在播放生成音色预览');
+    return;
+  }
+
+  if (event.target.closest('#confirmCloneResultBtn')) {
     state.registerModalOpen = true;
     state.registerScenes = [];
     state.cloneName = '';
@@ -4949,12 +5208,6 @@ document.addEventListener('input', (event) => {
     return;
   }
 
-  if (event.target.matches('#cloneConsentCheckbox')) {
-    state.cloneConsent = event.target.checked;
-    renderVoiceModal();
-    return;
-  }
-
   if (event.target.matches('#registerDescInput')) {
     state.cloneDescription = event.target.value.slice(0, 120);
     return;
@@ -4977,6 +5230,26 @@ document.addEventListener('input', (event) => {
     state.advanced[key] = Number(event.target.value);
     updateRangeTrack(event.target);
     renderAdvancedState();
+  }
+});
+
+document.addEventListener('change', (event) => {
+  if (event.target.matches('#cloneConsentCheckbox')) {
+    state.cloneConsent = event.target.checked;
+    renderVoiceModal();
+  }
+});
+
+document.addEventListener('keydown', (event) => {
+  const consentRow = event.target.closest('[data-clone-consent-row]');
+  if (!consentRow) {
+    return;
+  }
+
+  if (event.key === ' ' || event.key === 'Enter') {
+    event.preventDefault();
+    state.cloneConsent = !state.cloneConsent;
+    renderVoiceModal();
   }
 });
 
